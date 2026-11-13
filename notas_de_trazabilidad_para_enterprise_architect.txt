@@ -1,0 +1,70 @@
+============================================================
+NOTAS DE TRAZABILIDAD PARA ENTERPRISE ARCHITECT (CLASES Y ENUMERACIONES)
+Copia el texto correspondiente a cada clase y pégalo en su campo "Notes".
+============================================================
+
+[Clase: Pedido]
+Trazabilidad: RF-01, RF-02, RF-03, RF-04, RF-05, RF-06, RF-18 · RN-02, RN-06, RN-08, RN-09 · PR-01, PR-05 / #1, #2, #3, #8, #16, #18, #19
+
+[Clase: DetallePedido]
+Trazabilidad: RF-06, RF-25 · RN-01 · PR-01, PR-05 / #2, #17
+
+[Clase: Producto]
+Trazabilidad: RF-06, RF-17 · RN-01 · PR-01, PR-07 / #2, #17
+
+[Clase: Cliente]
+Trazabilidad: RF-01, RF-18, RNF-15 · PR-01, PR-07 / #1 (pool Cliente)
+
+[Clase: Usuario]
+Trazabilidad: RNF-04, RNF-09 · RN-05 · PR-05 / #17, #18
+
+[Clase: Pago]
+Trazabilidad: RF-02, RF-03 · RN-02, RN-07, RN-11 · PR-05 / #16, #18
+
+[Clase: NotaRemision]
+Trazabilidad: RF-08, RNF-07, RNF-16 · PR-04, PR-05 / #15c, #19
+
+[Clase: Venta]
+Trazabilidad: RF-07, RF-29 · RN-05 · PR-05 / #17
+
+[Clase: PuntoEntrega]
+Trazabilidad: RF-20, RF-24 · RN-10 · PR-04, PR-07 / #15b, #15c
+
+[Clase: Catalogo]
+Trazabilidad: RF-17, RF-23, RF-26, RNF-11 · PR-07, PR-03 / #14a (flujo hacia #1)
+
+[Clase: Tanda]
+Trazabilidad: RF-09, RF-10, RF-11, RF-12, RF-26 · RN-03, RN-04 · PR-03 / #8 a #14a
+
+[Clase: Horneada]
+Trazabilidad: RF-13 · RN-04 · PR-03 / #14a
+
+[Clase: Merma]
+Trazabilidad: RF-14 · PR-06 / #12x a #12z, #15x a #15y
+
+[Clase: Compra]
+Trazabilidad: RF-15 · PR-02 / #5, #6
+
+[Clase: Insumo]
+Trazabilidad: RF-15, RF-16 · PR-02 / #6, #7
+
+[Enumeracion: EstadoPedido]
+Trazabilidad: RF-05, RF-27 · PR-01, PR-05 / #8, #19
+
+[Enumeracion: EstadoPago]
+Trazabilidad: RF-02 · PR-05 / #16, #18
+
+[Enumeracion: FormaPago]
+Trazabilidad: RF-02 · RN-07, RN-11 · PR-05 / #16
+
+[Enumeracion: DestinoPedido]
+Trazabilidad: RF-01 · RN-06 · PR-01, PR-04 / #3, #15b
+
+[Enumeracion: PasoProduccion]
+Trazabilidad: RF-09, RF-10 · RN-03 · PR-03 / #10 a #14a
+
+[Enumeracion: CausaMerma]
+Trazabilidad: RF-14 · PR-06 / #12x a #12z, #15x a #15y
+
+[Enumeracion: RolUsuario]
+Trazabilidad: RNF-04 · RN-05 · PR-05 / #17, #18
