@@ -1,77 +1,76 @@
 # Entrega · Práctica 9
 
-<!--
-Plantilla de entrega (opcional). Pueden llenar este archivo o entregar su propio documento.
-- Formato libre: PDF, Word (.docx) o Markdown, con el nombre que quieran, dentro de entrega/.
-  Si entregan PDF o Word, pueden borrar este archivo; el robot revisa el documento más completo.
-- Pueden cambiar los títulos y el orden. El robot reconoce títulos parecidos a los de la
-  rúbrica y, si no los encuentra, busca la evidencia en todo el documento.
-- Todo lo que está entre estos símbolos de comentario NO cuenta como contenido.
-- El repositorio es público: nada de teléfonos, correos, CURP ni firmas. A las personas de
-  la organización, por su cargo, rol o apodo.
--->
-
-**Equipo:**
-**Módulo del Hub:**
-**Organización:**
+**Equipo:** ALQF (Ximena, Alyn, Quetzalli, Fidel)
+**Módulo del Hub:** Open Hub Tec (Gestión de Producción y Pedidos de Panadería)
+**Organización:** Tecnológico Nacional de México - Campus Tlaxiaco
 
 ## 1. Clases identificadas
 
-<!-- Por cada clase: el sustantivo del DRS de donde sale y el requisito que la justifica.
-Ejemplo:  | Entrega | "la encargada registra cada entrega de miel" | RF-03 | -->
-
 | Clase | Sustantivo del DRS | Requisito |
 |---|---|---|
-|  |  |  |
+| Pedido | "el cliente realiza un pedido" | RF-01, RF-02 |
+| Cliente | "registro de cliente" | RF-01 |
+| Producto | "catálogo de productos" | RF-17 |
+| Insumo | "control de insumos" | RF-06 |
+| Venta | "registro de ventas diarias" | RF-07 |
 
 ## 2. Atributos y tipos
 
-<!-- Un renglón por clase con sus atributos y tipo. Ejemplo:  Entrega: fecha: Date, kilos: decimal -->
+- Pedido: folio: int, piezas: int, anticipo: decimal, fechaEntrega: Date
+- Cliente: id: int, nombre: String, telefono: String
+- Producto: nombre: String, precioPieza: decimal
+- Insumo: nombre: String, existencia: decimal, minimo: decimal
+- Venta: fecha: Date, monto: decimal
 
 ## 3. Operaciones
 
-<!-- Cada operación con parámetros y el RF del que sale.
-Ejemplo:  Entrega.registrar(kilos: decimal): Entrega  ← RF-03 "registrar la entrega" -->
+- Pedido.calcularTotal(): decimal ← RF-03 "calcular costo total del pedido"
+- Pedido.cambiarEstado(estado: EstadoPedido): void ← RF-04 "actualizar estado del pedido"
+- Producto.precioVigente(id: int): decimal ← RF-17 "consultar precio vigente"
+- Insumo.actualizarExistencia(cantidad: decimal): void ← RF-06 "actualizar inventario de insumos"
+- Venta.registrar(pedido: Pedido): Venta ← RF-07 "registrar venta completada"
 
 ## 4. Encapsulamiento y visibilidad
 
-<!-- Qué dejaron privado (−) y qué público (+), y por qué. -->
+Atributos definidos como privados (-) para proteger el estado de los objetos, y operaciones clave como públicas (+) para permitir la interacción entre clases de manera controlada según el diseño orientado a objetos.
 
 ## 5. Asociaciones y multiplicidad
 
-<!-- Cada asociación leída como oración, con su multiplicidad.
-Ejemplo:  Un Socio realiza 0..* Entregas; cada Entrega es de 1 Socio. -->
+- Un Cliente solicita 0..* Pedidos; cada Pedido pertenece a 1 Cliente.
+- Un Pedido incluye 1..* DetallePedidos; cada DetallePedido se refiere a 1 Producto.
+- Una Compra repone 1 Insumo; un Insumo es repuesto por 0..* Compras.
 
 ## 6. Agregación, composición y herencia
 
-<!-- Cuál usaron y por qué. Si no usaron ninguna, expliquen por qué su modelo no la necesita. -->
+Se utilizó composición entre Pedido y DetallePedido debido a que los detalles no pueden existir de forma independiente sin el pedido que los agrupa. Se utilizaron enumeraciones para estandarizar catálogos fijos (como EstadoPedido y FormaPago).
 
 ## 7. Trazabilidad
 
-<!-- La misma información que docs/analisis/trazabilidad.csv: clase → requisito → parte del BPMN mejorado. -->
-
 | Clase | Requisito | Actividad del BPMN |
 |---|---|---|
-|  |  |  |
+| Pedido | RF-01, RF-02, RF-03 | PR-01 / #1, #2, #3 |
+| Producto | RF-17, RF-23 | PR-07 / #8, #16 |
+| Venta | RF-07, RF-29 | PR-05 / #18, #19 |
+| Insumo | RF-06, RF-25 | PR-01 / #8 |
 
 ## 8. Diagrama y notación UML
 
-<!-- Inserten el PNG exportado de Architect. Ejemplo:
 ![Diagrama de clases](../docs/analisis/diagrama-clases.png)
-Indiquen dónde está el .qea (modelo/OpenHub-Equipo.qea). -->
+
+El modelo fuente de Enterprise Architect se encuentra en: `modelo/OpenHub-EquipoALQF.qea`
 
 ## 9. Trabajo en equipo
 
-<!-- Quién hizo y quién revisó cada pull request. Ejemplo:  Ana: abrió #2 y #5; revisó #3. -->
-
 | Integrante | Pull requests que abrió | Pull requests que revisó |
 |---|---|---|
-|  |  |  |
+| Fidel | #3 | #2 |
+| Ximena | #1 | #3 |
+| Alyn | #2 | #1 |
+| Quetzalli | #4 | #2 |
 
 ## 10. Revisión cruzada
 
-<!-- Equipo que los revisó, sus observaciones y qué hicieron con cada una (corregido o justificado). -->
-
 | Observación del equipo revisor | Qué hicimos |
 |---|---|
-|  |  |
+| Revisar multiplicidades en las asociaciones de pedidos y detalles. | Corregido y validado directamente en el diagrama de Enterprise Architect. |
+| Asegurar tipos estrictos en los parámetros de las operaciones. | Corregido agregando tipos de datos (`decimal`, `int`, `void`, `Boolean`) en todas las operaciones. |
